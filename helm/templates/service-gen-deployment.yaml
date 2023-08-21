@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chaithApp
+  labels:
+    app: chaithApp
+spec:
+  selector:
+    matchLabels:
+      app: chaithApp
+  replicas:  1
+  template:
+    metadata:
+      labels:
+        app: chaithApp
+    spec:
+      containers:
+       - name: chaithApp
+         image: evolza/chaithApp:latest
+         imagePullPolicy: Always
+         ports:
+          - containerPort: 8080
+            name: rest
+      imagePullSecrets:
+          - name: notavailable
